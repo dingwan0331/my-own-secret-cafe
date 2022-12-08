@@ -1,6 +1,10 @@
 {
+  "name": "my-own-secret-cafe",
   "type": "module",
   "babel": {},
+  "scripts": {
+    "start": "NODE_ENV=development node ./src/server"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
