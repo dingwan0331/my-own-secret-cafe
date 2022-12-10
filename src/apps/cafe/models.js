@@ -55,6 +55,12 @@ export class Cafe extends Sequelize.models {
       }
     );
   }
+
+  static associate(models) {
+    this.belogsTo(models.Region);
+    this.hasMany(models.Review, { foreignKey: "cafeId", sourceKey: "id" });
+    this.hasMany(models.CafeImage, { foreignKey: "cafeId", sourceKey: "id" });
+  }
 }
 
 export class CafeImage extends Sequelize.models {
@@ -84,6 +90,10 @@ export class CafeImage extends Sequelize.models {
       }
     );
   }
+
+  static associate(models) {
+    this.belogsTo(models.Cafe);
+  }
 }
 
 export class Region extends Sequelize.models {
@@ -112,5 +122,9 @@ export class Region extends Sequelize.models {
         collate: "utf8_general_ci",
       }
     );
+  }
+
+  static associate(models) {
+    this.hasMany(models.Cafe, { foreignKey: "regionId", sourceKey: "id" });
   }
 }

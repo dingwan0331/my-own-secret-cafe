@@ -27,6 +27,14 @@ export class Review extends Sequelize.models {
       }
     );
   }
+
+  static associate(models) {
+    this.belogsTo(models.Cafe);
+    this.hasMany(models.ReviewImage, {
+      foreignKey: "reviewId",
+      sourceKey: "id",
+    });
+  }
 }
 
 export class ReviewImage extends Sequelize.models {
@@ -55,5 +63,9 @@ export class ReviewImage extends Sequelize.models {
         collate: "utf8_general_ci",
       }
     );
+  }
+
+  static associate(models) {
+    this.belogsTo(models.Review);
   }
 }
