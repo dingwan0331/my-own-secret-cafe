@@ -57,7 +57,7 @@ export class Cafe extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.belogsTo(models.Region);
+    this.belongsTo(models.Region);
     this.hasMany(models.Review, { foreignKey: "cafeId", sourceKey: "id" });
     this.hasMany(models.CafeImage, { foreignKey: "cafeId", sourceKey: "id" });
   }
@@ -92,7 +92,7 @@ export class CafeImage extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.belogsTo(models.Cafe);
+    this.belongsTo(models.Cafe);
   }
 }
 

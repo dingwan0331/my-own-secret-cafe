@@ -29,7 +29,7 @@ export class Review extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.belogsTo(models.Cafe);
+    this.belongsTo(models.Cafe);
     this.hasMany(models.ReviewImage, {
       foreignKey: "reviewId",
       sourceKey: "id",
@@ -66,6 +66,6 @@ export class ReviewImage extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.belogsTo(models.Review);
+    this.belongsTo(models.Review);
   }
 }
