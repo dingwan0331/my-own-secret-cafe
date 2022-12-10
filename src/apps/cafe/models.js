@@ -14,18 +14,18 @@ export class Cafe extends Sequelize.Model {
         name: { type: Sequelize.STRING(20), allowNull: false },
         description: { type: Sequelize.STRING(200), allowNull: false },
         priceOfAmericano: {
-          type: Sequelize.Integer.UNSIGNED,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
         },
 
         // 오픈, 마감시간 24시 일시 둘다 0000
-        openTime: { type: Sequelize.Integer.UNSIGNED, allowNull: false },
-        closedTime: { type: Sequelize.Integer.UNSIGNED, allowNull: false },
+        openTime: { type: Sequelize.INTEGER.UNSIGNED, allowNull: false },
+        closedTime: { type: Sequelize.INTEGER.UNSIGNED, allowNull: false },
 
         //주소 관련
         address: { type: Sequelize.STRING(30), allowNull: false },
-        latitude: { type: Sequelize.Decimal(13, 10), allowNull: false },
-        longtude: { type: Sequelize.Decimal(13, 10), allowNull: false },
+        latitude: { type: Sequelize.DECIMAL(13, 10), allowNull: false },
+        longtude: { type: Sequelize.DECIMAL(13, 10), allowNull: false },
 
         numberOfSocket: {
           type: Sequelize.ENUM("0~5", "6~10", "11~15", "16~"),
@@ -33,7 +33,7 @@ export class Cafe extends Sequelize.Model {
           default: "0~5",
         },
         isSeminaroom: {
-          type: Sequelize.Boolean,
+          type: Sequelize.BOOLEAN,
           allowNull: false,
           default: false,
         },
