@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-export class Cafe extends Sequelize.models {
+export class Cafe extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -63,7 +63,7 @@ export class Cafe extends Sequelize.models {
   }
 }
 
-export class CafeImage extends Sequelize.models {
+export class CafeImage extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -96,7 +96,7 @@ export class CafeImage extends Sequelize.models {
   }
 }
 
-export class Region extends Sequelize.models {
+export class Region extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {

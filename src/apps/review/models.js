@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-export class Review extends Sequelize.models {
+export class Review extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -37,7 +37,7 @@ export class Review extends Sequelize.models {
   }
 }
 
-export class ReviewImage extends Sequelize.models {
+export class ReviewImage extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
