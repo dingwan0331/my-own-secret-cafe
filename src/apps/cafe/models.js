@@ -85,3 +85,32 @@ export class CafeImage extends Sequelize.models {
     );
   }
 }
+
+export class Region extends Sequelize.models {
+  static init(sequelize) {
+    return super.init(
+      {
+        id: {
+          type: Sequelize.BIGINT.UNSIGNED,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        name: {
+          type: Sequelize.STRING(200),
+          allowNull: false,
+        },
+      },
+      {
+        sequelize,
+        timestamps: true,
+        modelName: "Region",
+        tableName: "regions",
+        paranoid: false,
+        underscored: true,
+        charset: "utf8",
+        collate: "utf8_general_ci",
+      }
+    );
+  }
+}
