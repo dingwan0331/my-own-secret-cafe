@@ -10,8 +10,12 @@ export class Review extends Sequelize.Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        url: {
+        description: {
           type: Sequelize.STRING(200),
+          allowNull: false,
+        },
+        rating: {
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
         },
       },
