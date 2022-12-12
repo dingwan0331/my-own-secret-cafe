@@ -57,9 +57,19 @@ export class Cafe extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Region);
-    this.hasMany(models.Review, { foreignKey: "cafeId", sourceKey: "id" });
-    this.hasMany(models.CafeImage, { foreignKey: "cafeId", sourceKey: "id" });
+    this.belongsTo(models.Region, {
+      foreignKey: { allowNull: false },
+    });
+    this.hasMany(models.Review, {
+      foreignKey: { name: "cafeId", allowNull: false },
+      sourceKey: "id",
+      onDelete: "cascade",
+    });
+    this.hasMany(models.CafeImage, {
+      foreignKey: { name: "cafeId", allowNull: false },
+      sourceKey: "id",
+      onDelete: "cascade",
+    });
   }
 }
 
@@ -92,7 +102,7 @@ export class CafeImage extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Cafe);
+    this.belongsTo(models.Cafe, { foreignKey: { allowNull: false } });
   }
 }
 
@@ -101,7 +111,7 @@ export class Region extends Sequelize.Model {
     return super.init(
       {
         id: {
-          type: Sequelize.BIGINT.UNSIGNED,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           primaryKey: true,
           autoIncrement: true,
@@ -125,6 +135,10 @@ export class Region extends Sequelize.Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Cafe, { foreignKey: "regionId", sourceKey: "id" });
+    this.hasMany(models.Cafe, {
+      foreignKey: { name: "regionId", allowNull: false },
+      sourceKey: "id",
+      onDelete: "cascade",
+    });
   }
 }
