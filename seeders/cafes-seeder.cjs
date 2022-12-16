@@ -1,11 +1,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     queryInterface.bulkInsert("regions", [
-      { id: 1, name: "강남", created_at: new Date(), updated_at: new Date() },
-      { id: 2, name: "홍대", created_at: new Date(), updated_at: new Date() },
-      { id: 3, name: "신촌", created_at: new Date(), updated_at: new Date() },
-      { id: 4, name: "신사", created_at: new Date(), updated_at: new Date() },
-      { id: 5, name: "사당", created_at: new Date(), updated_at: new Date() },
+      { id: 1, name: "강남" },
+      { id: 2, name: "홍대" },
+      { id: 3, name: "신촌" },
+      { id: 4, name: "신사" },
+      { id: 5, name: "사당" },
     ]);
     const regionArray = ["강남", "홍대", "신촌", "신사", "사당"];
     const cafeArray = [
@@ -43,11 +43,11 @@ module.exports = {
           number_of_socket: socketEnum[socketEnumRandoIndex],
           open_time:
             openTimeArray[Math.floor(Math.random() * openTimeArray.length)],
-          closed_time:
+          close_time:
             closeTimeArray[Math.floor(Math.random() * closeTimeArray.length)],
           address: regionArray[j],
           latitude: latitude,
-          longtude: longtitude,
+          longtitude: longtitude,
           is_seminaroom: Boolean(Math.floor(Math.random() * 2)),
           wifi_image_url: "a",
           entrance_image_url: "a",
