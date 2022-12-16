@@ -20,12 +20,12 @@ export class Cafe extends Sequelize.Model {
 
         // 오픈, 마감시간 24시 일시 둘다 0000
         openTime: { type: Sequelize.INTEGER.UNSIGNED, allowNull: false },
-        closedTime: { type: Sequelize.INTEGER.UNSIGNED, allowNull: false },
+        closeTime: { type: Sequelize.INTEGER.UNSIGNED, allowNull: false },
 
         //주소 관련
         address: { type: Sequelize.STRING(30), allowNull: false },
-        latitude: { type: Sequelize.DECIMAL(13, 10), allowNull: false },
-        longtude: { type: Sequelize.DECIMAL(13, 10), allowNull: false },
+        latitude: { type: Sequelize.DECIMAL(12, 10), allowNull: false },
+        longtitude: { type: Sequelize.DECIMAL(13, 10), allowNull: false },
 
         numberOfSocket: {
           type: Sequelize.ENUM("0~5", "6~10", "11~15", "16~"),
@@ -78,7 +78,7 @@ export class CafeImage extends Sequelize.Model {
     return super.init(
       {
         id: {
-          type: Sequelize.BIGINT.UNSIGNED,
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           primaryKey: true,
           autoIncrement: true,
@@ -123,7 +123,7 @@ export class Region extends Sequelize.Model {
       },
       {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         modelName: "Region",
         tableName: "regions",
         paranoid: false,
