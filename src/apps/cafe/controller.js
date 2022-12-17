@@ -1,3 +1,4 @@
+import GetCafesDto from "./dto/get-cafes.dto.js";
 import { CafeService } from "./service.js";
 
 export class CafeController {
@@ -7,7 +8,9 @@ export class CafeController {
 
   getCafes = async (req, res, next) => {
     try {
-      res.status(200).json(await this.cafeService.getCafes());
+      const reqQuery = new GetCafesDto(req.query);
+
+      res.status(200).json(await this.cafeService.getCafes(reqQuery));
     } catch (err) {
       next(err);
     }
