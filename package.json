@@ -3,7 +3,8 @@
   "type": "module",
   "babel": {},
   "scripts": {
-    "start": "NODE_ENV=development node ./src/server"
+    "start": "NODE_ENV=development node ./src/server",
+    "dev": "NODE_ENV=development npx nodemon ./src/server"
   },
   "dependencies": {
     "cors": "^2.8.5",
