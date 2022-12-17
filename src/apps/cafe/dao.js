@@ -1,4 +1,4 @@
-import { Cafe, Region } from "./models.js";
+import { Cafe, CafeImage, Region } from "./models.js";
 
 export class CafeDao {
   constructor() {
@@ -27,5 +27,13 @@ export class CafeDao {
     }
 
     return await this.cafe.findAll(queryOptions);
+  };
+  getCafe = async (cafeId) => {
+    return await this.cafe.findByPk(cafeId, {
+      include: [
+        { model: Region },
+        { model: CafeImage, attributes: ["id", "url"] },
+      ],
+    });
   };
 }

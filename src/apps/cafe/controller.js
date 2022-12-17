@@ -15,9 +15,19 @@ export class CafeController {
       next(err);
     }
   };
+  getCafe = async (req, res, next) => {
+    try {
+      const { cafeId } = req.params;
+
+      res.status(200).json(await this.cafeService.getCafe(cafeId));
+    } catch (err) {
+      next(err);
+    }
+  };
 
   createEndPoints = (app, router) => {
     router.get("", this.getCafes);
+    router.get("/:cafeId", this.getCafe);
 
     app.use("/cafes", router);
 

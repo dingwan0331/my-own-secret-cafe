@@ -22,4 +22,8 @@ export class CafeService {
 
     return await this.cafeDao.getCafes(reqQuery, ATTRIBUTES);
   };
+
+  getCafe = async (cafeId) => {
+    return await this.cafeDao.getCafe(cafeId);
+  };
 }
