@@ -39,7 +39,8 @@ export class Cafe extends Sequelize.Model {
         },
 
         // 사용할 이미지들
-        entranceImageUrl: { type: Sequelize.STRING(200), allowNull: false },
+        thumbnailUrl: { type: Sequelize.STRING(200), allowNull: false },
+        mainImageUrl: { type: Sequelize.STRING(200), allowNull: false },
         wifiImageUrl: { type: Sequelize.STRING(200), allowNull: true },
         menuImageUrl: { type: Sequelize.STRING(200), allowNull: true },
       },
