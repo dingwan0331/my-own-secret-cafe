@@ -18,7 +18,7 @@ export class Cafe extends Sequelize.Model {
           allowNull: false,
         },
 
-        // 오픈, 마감시간 24시 일시 둘다 0000
+        // 24시 일시 둘다 오픈시간: 0000, 마감시간: 8888
         openTime: { type: Sequelize.INTEGER.UNSIGNED, allowNull: false },
         closeTime: { type: Sequelize.INTEGER.UNSIGNED, allowNull: false },
 
