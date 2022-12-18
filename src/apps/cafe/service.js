@@ -17,7 +17,7 @@ export class CafeService {
       "longtitude",
       "numberOfSocket",
       "isSeminaroom",
-      "entranceImageUrl",
+      "thumbnailUrl",
     ];
 
     return await this.cafeDao.getCafes(reqQuery, ATTRIBUTES);
