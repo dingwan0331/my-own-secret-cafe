@@ -37,7 +37,11 @@ export default class App {
   }
 
   setRouter(app, router) {
-    this.cafeController.createEndPoints(app, router);
+    const cafeRouter = this.cafeController.createEndPoints(express.Router());
+
+    router.use("/cafes", cafeRouter);
+
+    app.use("/api", router);
     return app;
   }
 

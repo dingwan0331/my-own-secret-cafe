@@ -35,12 +35,10 @@ export class CafeController {
     }
   };
 
-  createEndPoints = (app, router) => {
+  createEndPoints = (router) => {
     router.get("", checkCache, this.getCafes);
     router.get("/:cafeId", checkCache, this.getCafe);
 
-    app.use("/cafes", router);
-
-    return app;
+    return router;
   };
 }
