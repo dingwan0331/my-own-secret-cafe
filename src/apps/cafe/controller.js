@@ -1,3 +1,4 @@
+import { checkCache } from "../../middlewares/check-cache.js";
 import GetCafesDto from "./dto/get-cafes.dto.js";
 import { CafeService } from "./service.js";
 
@@ -26,8 +27,8 @@ export class CafeController {
   };
 
   createEndPoints = (app, router) => {
-    router.get("", this.getCafes);
-    router.get("/:cafeId", this.getCafe);
+    router.get("", checkCache, this.getCafes);
+    router.get("/:cafeId", checkCache, this.getCafe);
 
     app.use("/cafes", router);
 
