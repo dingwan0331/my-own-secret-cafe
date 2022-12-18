@@ -1,9 +1,9 @@
 import { redis } from "../server.js";
 
-export const checkCache = (req, res, next) => {
+export const checkCache = async (req, res, next) => {
   try {
     const { originalUrl } = req;
-    const cache = redis.get(originalUrl);
+    const cache = JSON.parse(await redis.get(originalUrl));
 
     if (cache) {
       res.status(200).json(cache);
