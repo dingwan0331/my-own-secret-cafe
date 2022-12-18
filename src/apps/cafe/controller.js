@@ -24,8 +24,12 @@ export class CafeController {
   getCafe = async (req, res, next) => {
     try {
       const { cafeId } = req.params;
+      const cafeRow = await this.cafeService.getCafe(cafeId);
+      const result = { cafe: cafeRow };
 
-      res.status(200).json(await this.cafeService.getCafe(cafeId));
+      await redis.set(req.originalUrl, JSON.stringify(result));
+
+      res.status(200).json(result);
     } catch (err) {
       next(err);
     }
