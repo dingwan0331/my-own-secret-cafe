@@ -1,4 +1,5 @@
 import { checkCache } from "../../middlewares/check-cache.js";
+import { redis } from "../../server.js";
 import GetCafesDto from "./dto/get-cafes.dto.js";
 import { CafeService } from "./service.js";
 
@@ -10,8 +11,12 @@ export class CafeController {
   getCafes = async (req, res, next) => {
     try {
       const reqQuery = new GetCafesDto(req.query);
+      const cafeRows = await this.cafeService.getCafes(reqQuery);
+      const result = { cafes: cafeRows };
 
-      res.status(200).json(await this.cafeService.getCafes(reqQuery));
+      await redis.set(req.originalUrl, JSON.stringify(result));
+
+      res.status(200).json(result);
     } catch (err) {
       next(err);
     }
