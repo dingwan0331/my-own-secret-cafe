@@ -1,17 +1,30 @@
 import App from "./app.js";
 import Config from "./config/index.js";
 import { sequelize } from "./models.js";
+import Redis from "./utils/redis.js";
+
+let redis;
 
 const boostrap = async () => {
-  const { NODE_ENV, SERVER_PORT } = new Config();
+  try {
+    const { NODE_ENV, SERVER_PORT, REDIS_URL } = new Config();
 
-  const app = new App(NODE_ENV);
+    const app = new App(NODE_ENV);
 
-  await sequelize.sync({ force: false });
+    // sequelize connect
+    await sequelize.sync({ force: false });
 
-  app.createApp();
+    // redis connect
+    redis = new Redis(REDIS_URL);
+    await redis.connect();
 
-  app.listen(SERVER_PORT);
+    app.createApp();
+    app.listen(SERVER_PORT);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 boostrap();
+
+export { redis };
