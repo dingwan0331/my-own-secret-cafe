@@ -3,9 +3,6 @@ export default class GetCafesDto {
     "closetime-desc": [["closeTime", "DESC"]],
     "opentime-asc": [["openTime", "ASC"]],
   };
-  /**
-   * @swagger
-   */
   constructor({
     offset = 0,
     limit = 10,

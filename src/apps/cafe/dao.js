@@ -50,6 +50,16 @@ export class CafeDao {
    *          type: string
    *          format: uri
    *          description: s3 썸네일 주소
+   *        Region:
+   *          type: object
+   *          properties:
+   *            id:
+   *              type: integer
+   *              minimum: 1
+   *              description: DB 자동증가 pk값
+   *            name:
+   *              type: string
+   *              descripttion: 지역이름
    */
   getCafes = async (reqQuery, ATTRIBUTES) => {
     const { offset, limit, region, order } = reqQuery;
@@ -76,6 +86,7 @@ export class CafeDao {
 
     return await this.cafe.findAll(queryOptions);
   };
+
   getCafe = async (cafeId) => {
     return await this.cafe.findByPk(cafeId, {
       include: [
