@@ -17,7 +17,6 @@ const boostrap = async () => {
     // redis connect
     redis = new Redis(REDIS_URL);
     await redis.connect();
-    redis = redis.v4;
 
     app.createApp();
     app.listen(SERVER_PORT);
