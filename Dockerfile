@@ -10,7 +10,5 @@ COPY ./src ./src
 
 COPY .env .env
 
-EXPOSE 8000   
-
 #  서버를 실행
 CMD ["npm", "start"]
