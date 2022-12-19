@@ -52,7 +52,7 @@ export class CafeDao {
    *          description: s3 썸네일 주소
    */
   getCafes = async (reqQuery, ATTRIBUTES) => {
-    const { offset, limit, region, orderBy } = reqQuery;
+    const { offset, limit, region, order } = reqQuery;
     let queryOptions = {};
 
     if (region.length == 0) {
@@ -60,7 +60,7 @@ export class CafeDao {
         attributes: ATTRIBUTES,
         offset,
         limit,
-        order: orderBy,
+        order,
         include: { model: Region },
       };
     } else {
@@ -68,7 +68,7 @@ export class CafeDao {
         attributes: ATTRIBUTES,
         offset,
         limit,
-        order: orderBy,
+        order,
         include: { model: Region },
         where: { region_id: region },
       };

@@ -9,12 +9,12 @@ export default class GetCafesDto {
   constructor({
     offset = 0,
     limit = 10,
-    orderBy = "closetime-desc",
+    order = "closetime-desc",
     region = "[]",
   }) {
     this.offset = offset;
     this.limit = limit;
-    this.orderBy = this.orderBySet[orderBy];
+    this.order = this.orderBySet[order];
     this.region = JSON.parse(region);
   }
 }
