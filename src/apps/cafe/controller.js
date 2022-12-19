@@ -11,8 +11,7 @@ export class CafeController {
   getCafes = async (req, res, next) => {
     try {
       const reqQuery = new GetCafesDto(req.query);
-      const cafeRows = await this.cafeService.getCafes(reqQuery);
-      const result = { cafes: cafeRows };
+      const result = await this.cafeService.getCafes(reqQuery);
 
       await redis.set(req.originalUrl, JSON.stringify(result));
 
@@ -24,8 +23,7 @@ export class CafeController {
   getCafe = async (req, res, next) => {
     try {
       const { cafeId } = req.params;
-      const cafeRow = await this.cafeService.getCafe(cafeId);
-      const result = { cafe: cafeRow };
+      const result = await this.cafeService.getCafe(cafeId);
 
       await redis.set(req.originalUrl, JSON.stringify(result));
 

@@ -20,10 +20,12 @@ export class CafeService {
       "thumbnailUrl",
     ];
 
-    return await this.cafeDao.getCafes(reqQuery, ATTRIBUTES);
+    const cafeRows = await this.cafeDao.getCafes(reqQuery, ATTRIBUTES);
+    return { cafes: cafeRows };
   };
 
   getCafe = async (cafeId) => {
-    return await this.cafeDao.getCafe(cafeId);
+    const cafeRow = await this.cafeDao.getCafe(cafeId);
+    return { cafes: cafeRow };
   };
 }
