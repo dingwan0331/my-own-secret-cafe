@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { responseError } from "./middlewares/response-error.js";
 import { CafeController } from "./apps/cafe/controller.js";
+import Swagger from "./swagger/swagger.js";
 
 export default class App {
   constructor(NODE_ENV) {
@@ -37,9 +38,11 @@ export default class App {
   }
 
   setRouter(app, router) {
+    const swagger = new Swagger();
     const cafeRouter = this.cafeController.createEndPoints(express.Router());
-
     router.use("/cafes", cafeRouter);
+
+    router.use("/docs", swagger.serve, swagger.setup());
 
     app.use("/api", router);
     return app;
