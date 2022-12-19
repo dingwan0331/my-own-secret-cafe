@@ -244,3 +244,4 @@ dist
 .pnp.*
 
 .vscode
+nginx.conf
