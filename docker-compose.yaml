@@ -1,0 +1,27 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf # 현재 conf파일위치:마운트할위치
+    restart: "unless-stopped" # 내부에서 에러로 인해 container가 죽을 경우 restart
+    container_name: nginx
+    depends_on:
+      - my-own-secret-cafe-api
+
+  redis:
+    image: redis:alpine
+    container_name: reids
+    command: redis-server --port 6379
+    expose: # 외부접속을 막기위해 ports가 아닌 expose로 설정
+      - 6379
+
+  my-own-secret-cafe-api:
+    image: dingwan0331/my-own-secret-cafe-api:latest
+    expose:
+      - 8000
+    container_name: my-own-secret-cafe-api
+    depends_on:
+      - redis
