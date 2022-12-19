@@ -16,7 +16,7 @@ export default class Swagger {
         },
       ],
     },
-    apis: ["src/app.js", "src/apps/*/controller.js"],
+    apis: ["src/app.js", "src/apps/*/controller.js", "src/apps/*/dao.js"],
   };
 
   constructor() {

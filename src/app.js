@@ -40,6 +40,12 @@ export default class App {
   setRouter(app, router) {
     const swagger = new Swagger();
     const cafeRouter = this.cafeController.createEndPoints(express.Router());
+    /**
+     * @swagger
+     * tags:
+     *  name: Cafes
+     *  description: Cafes api
+     */
     router.use("/cafes", cafeRouter);
 
     router.use("/docs", swagger.serve, swagger.setup());

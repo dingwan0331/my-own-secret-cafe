@@ -34,6 +34,44 @@ export class CafeController {
   };
 
   createEndPoints = (router) => {
+    /**
+     * @swagger
+     * paths:
+     *   /cafes:
+     *     get:
+     *       summary: get cafes
+     *       tags: [Cafes]
+     *       parameters:
+     *        - in: query
+     *          name: offset
+     *          description: default = 0
+     *          required: false
+     *        - in: query
+     *          name: limit
+     *          description: default = 10
+     *          required: false
+     *        - in: query
+     *          name: region
+     *          description: 필터링에 필요한 지역id
+     *          required: false
+     *        - in: query
+     *          name: order
+     *          description: closetime-desc, opentime-asc 두가지만 지원
+     *          required: false
+     *       responses:
+     *         "200":
+     *           description:
+     *           content:
+     *             application/json:
+     *              schema:
+     *                type: object
+     *                properties:
+     *                  cafes:
+     *                    type: array
+     *                    items:
+     *                      $ref: '#/components/schemas/Cafes'
+     *                    minItems: 10
+     */
     router.get("", checkCache, this.getCafes);
     router.get("/:cafeId", checkCache, this.getCafe);
 
