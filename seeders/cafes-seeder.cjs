@@ -18,7 +18,7 @@ module.exports = {
     const priceOfAmericanoArray = [3000, 3500, 4000, 4500, 5000];
     const socketEnum = ["0~5", "6~10", "11~15", "16~"];
     const cafeData = [];
-    const openTimeArray = [9000, 9030, 1000, 1030, 1100, 0];
+    const openTimeArray = [900, 930, 1000, 1030, 1100, 0];
     const closeTimeArray = [2100, 2130, 2200, 2230, 2300, 2330, 2400, 0];
 
     let a = 1;
