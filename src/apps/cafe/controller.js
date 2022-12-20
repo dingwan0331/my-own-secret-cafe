@@ -73,6 +73,24 @@ export class CafeController {
      *                    minItems: 10
      */
     router.get("", checkCache, this.getCafes);
+    /**
+     * @swagger
+     * paths:
+     *   /cafes/{cafeId}:
+     *     get:
+     *       summary: get cafe
+     *       tags: [Cafes]
+     *       responses:
+     *         "200":
+     *           description:
+     *           content:
+     *             application/json:
+     *              schema:
+     *                type: object
+     *                properties:
+     *                  cafe:
+     *                    $ref: '#/components/schemas/Cafe'
+     */
     router.get("/:cafeId", checkCache, this.getCafe);
 
     return router;
