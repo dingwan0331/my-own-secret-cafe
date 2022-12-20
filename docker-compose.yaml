@@ -19,7 +19,9 @@ services:
       - 6379
 
   my-own-secret-cafe-api:
-    image: dingwan0331/my-own-secret-cafe-api:latest
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
     expose:
       - 8000
     container_name: my-own-secret-cafe-api
