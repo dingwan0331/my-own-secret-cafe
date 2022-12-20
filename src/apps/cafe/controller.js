@@ -37,7 +37,7 @@ export class CafeController {
     /**
      * @swagger
      * paths:
-     *   /cafes:
+     *   /api/cafes:
      *     get:
      *       summary: get cafes
      *       tags: [Cafes]
@@ -76,7 +76,7 @@ export class CafeController {
     /**
      * @swagger
      * paths:
-     *   /cafes/{cafeId}:
+     *   /api/cafes/{cafeId}:
      *     get:
      *       summary: get cafe
      *       tags: [Cafes]
