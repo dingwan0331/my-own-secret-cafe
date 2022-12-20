@@ -13,20 +13,24 @@ export class CafeDao {
    *      properties:
    *        id:
    *          type: integer
-   *          minimum: 1
    *          description: DB 자동증가 pk값
+   *          example: 1
    *        name:
    *          type: string
    *          description: 카페이름
+   *          example: 탐탐 노량진점
    *        priceOfAmericano:
    *          type: integer
    *          description: 아메리카노 기본사이즈 가격
+   *          example: 3500
    *        openTime:
    *          type: integer
    *          description: 오픈 시간 0000 or 0 일때 24시간으로 간주됌
+   *          example: 0
    *        closeTime:
    *          type: integer
    *          description: 마감 시간 8888 일때 24시간으로 간주됌
+   *          example: 8888
    *        address:
    *          type: string
    *          description: 카페 주소
@@ -34,10 +38,12 @@ export class CafeDao {
    *          type: number
    *          format: float
    *          description: 지도 사용시 필요한 위도
+   *          example: 30.1491829381
    *        longtitude:
    *          type: number
    *          format: float
    *          description: 지도 사용시 필요한 경도
+   *          example: 80.1491829381
    *        numberOfSocket:
    *          type: strig
    *          enum: [0~5, 6~10, 11~15, 16~]
@@ -49,6 +55,7 @@ export class CafeDao {
    *          type: string
    *          format: uri
    *          description: s3 썸네일 주소
+   *          example: www.afa.com/12311
    *        Region:
    *          type: object
    *          properties:
@@ -59,6 +66,7 @@ export class CafeDao {
    *            name:
    *              type: string
    *              descripttion: 지역이름
+   *              example: 노량진
    */
   getCafes = async (reqQuery, ATTRIBUTES) => {
     const { offset, limit, region, order } = reqQuery;
@@ -123,12 +131,12 @@ export class CafeDao {
    *          type: number
    *          format: float
    *          description: 지도 사용시 필요한 위도
-   *          example: 12.1491829381932
+   *          example: 12.1491829381
    *        longtitude:
    *          type: number
    *          format: float
    *          description: 지도 사용시 필요한 경도
-   *          example: 12.1491829381932
+   *          example: 12.1491829381
    *        numberOfSocket:
    *          type: strig
    *          enum: [0~5, 6~10, 11~15, 16~]
