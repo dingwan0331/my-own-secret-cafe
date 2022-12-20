@@ -192,6 +192,7 @@ export class CafeDao {
    */
   getCafe = async (cafeId) => {
     return await this.cafe.findByPk(cafeId, {
+      attributes: { exclude: ["thumbnailUrl", "regionId", "RegionId"] },
       include: [
         { model: Region },
         { model: CafeImage, attributes: ["id", "url"] },
