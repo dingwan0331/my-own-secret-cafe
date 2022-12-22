@@ -4,6 +4,7 @@
   "babel": {},
   "scripts": {
     "start": "NODE_ENV=production npx pm2-runtime ./dist/server.js -i 2",
+    "build": "npx tsc",
     "dev": "NODE_ENV=development npx nodemon ./src/server"
   },
   "dependencies": {
