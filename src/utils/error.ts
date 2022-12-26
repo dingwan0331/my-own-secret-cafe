@@ -1,3 +1,8 @@
+export interface HttpError {
+  isCustom: boolean;
+  message: string;
+  status: number;
+}
 class BaseHttpError extends Error {
   protected isCustom: boolean;
   protected status: number;
