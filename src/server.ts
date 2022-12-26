@@ -3,23 +3,19 @@ import Config from "./config/index.js";
 import { sequelize } from "./models.js";
 import Redis from "./utils/redis.js";
 
-let redis;
+const config = new Config();
+const app = new App(config.NODE_ENV);
+const redis = new Redis(config.REDIS_URL);
 
 const boostrap = async () => {
   try {
-    const { NODE_ENV, SERVER_PORT, REDIS_URL } = new Config();
-
-    const app = new App(NODE_ENV);
-
-    // sequelize connect
     await sequelize.sync({ force: false });
 
-    // redis connect
-    redis = new Redis(REDIS_URL);
     await redis.connect();
 
     app.createApp();
-    app.listen(SERVER_PORT);
+
+    app.listen(config.SERVER_PORT);
   } catch (err) {
     console.error(err);
   }
