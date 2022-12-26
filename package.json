@@ -5,7 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=production npx pm2-runtime ./dist/server.js -i 2",
     "build": "npx tsc",
-    "dev": "NODE_ENV=development npx nodemon ./src/server"
+    "dev": "NODE_ENV=development npx nodemon --exec node --loader ts-node/esm ./src/server.ts --watch"
   },
   "dependencies": {
     "cors": "^2.8.5",
