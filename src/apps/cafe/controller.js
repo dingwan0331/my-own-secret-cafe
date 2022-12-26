@@ -1,4 +1,4 @@
-import { checkCache } from "../../middlewares/check-cache.js";
+import { checkCache } from "../../middlewares/check-cache";
 import { redis } from "../../server.js";
 import GetCafesDto from "./dto/get-cafes.dto.js";
 import { CafeService } from "./service.js";

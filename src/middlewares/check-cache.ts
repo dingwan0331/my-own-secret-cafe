@@ -1,6 +1,11 @@
 import { redis } from "../server.js";
+import { NextFunction, Request, Response } from "express";
 
-export const checkCache = async (req, res, next) => {
+export const checkCache = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { originalUrl } = req;
     const cache = JSON.parse(await redis.get(originalUrl));
