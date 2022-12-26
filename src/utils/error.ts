@@ -1,13 +1,17 @@
 class BaseHttpError extends Error {
-  constructor(message) {
+  protected isCustom: boolean;
+  protected status: number;
+
+  constructor(message: string) {
     super();
     this.message = message;
     this.isCustom = true;
+    this.status = 500;
   }
 }
 
 export class BadRequestError extends BaseHttpError {
-  constructor(message) {
+  constructor(message: string) {
     super(message);
     this.status = 400;
     this.message = message;
@@ -15,7 +19,7 @@ export class BadRequestError extends BaseHttpError {
 }
 
 export class UnAuthrizedError extends BaseHttpError {
-  constructor(message) {
+  constructor(message: string) {
     super(message);
     this.status = 401;
     this.message = message;
@@ -23,7 +27,7 @@ export class UnAuthrizedError extends BaseHttpError {
 }
 
 export class ForbiddenError extends BaseHttpError {
-  constructor(message) {
+  constructor(message: string) {
     super(message);
     this.status = 403;
     this.message = message;
@@ -31,8 +35,8 @@ export class ForbiddenError extends BaseHttpError {
 }
 
 export class NotFoundError extends BaseHttpError {
-  constructor() {
-    super();
+  constructor(message = "Not Found Url") {
+    super(message);
     this.status = 404;
     this.message = "Not Found Url";
   }
